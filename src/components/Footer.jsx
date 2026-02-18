@@ -1,4 +1,5 @@
-import { Facebook, Instagram, Twitter, ExternalLink, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -30,9 +31,9 @@ const Footer = () => {
                     <div>
                         <h3 className="text-white font-semibold text-lg mb-6">Company</h3>
                         <ul className="space-y-4">
-                            <FooterLink href="#hero">About Us</FooterLink>
-                            <FooterLink href="#features">Features</FooterLink>
-                            <FooterLink href="#business">Careers</FooterLink>
+                            <FooterLink href="/about">About Us</FooterLink>
+                            <FooterLink href="/#features">Features</FooterLink>
+                            <FooterLink href="/#business">Careers</FooterLink>
                             <FooterLink href="#">Press Kit</FooterLink>
                         </ul>
                     </div>
@@ -41,10 +42,10 @@ const Footer = () => {
                     <div>
                         <h3 className="text-white font-semibold text-lg mb-6">Resources</h3>
                         <ul className="space-y-4">
-                            <FooterLink href="#faq">Help Center</FooterLink>
-                            <FooterLink href="#">Privacy Policy</FooterLink>
-                            <FooterLink href="#">Terms of Service</FooterLink>
-                            <FooterLink href="#">Cookie Policy</FooterLink>
+                            <FooterLink href="/#faq">Help Center</FooterLink>
+                            <FooterLink href="/privacy">Privacy Policy</FooterLink>
+                            <FooterLink href="/terms">Terms of Service</FooterLink>
+                            <FooterLink href="/cookie-policy">Cookie Policy</FooterLink>
                         </ul>
                     </div>
 
@@ -73,9 +74,9 @@ const Footer = () => {
                         © {new Date().getFullYear()} Copono. All rights reserved.
                     </p>
                     <div className="flex items-center gap-6 text-sm text-slate-500">
-                        <a href="#" className="hover:text-white transition-colors">Privacy</a>
-                        <a href="#" className="hover:text-white transition-colors">Terms</a>
-                        <a href="#" className="hover:text-white transition-colors">Cookies</a>
+                        <Link to="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+                        <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
+                        <Link to="/cookie-policy" className="hover:text-white transition-colors">Cookies</Link>
                     </div>
                 </div>
             </div>
@@ -92,16 +93,34 @@ const SocialLink = ({ href, icon }) => (
     </a>
 );
 
-const FooterLink = ({ href, children }) => (
-    <li>
-        <a
-            href={href}
-            className="text-slate-400 hover:text-white transition-colors flex items-center gap-1 group"
-        >
-            <span className="w-0 group-hover:w-2 transition-all duration-300 h-0.5 bg-primary rounded-full"></span>
-            {children}
-        </a>
-    </li>
-);
+const FooterLink = ({ href, children }) => {
+    const isInternal = href.startsWith('/');
+
+    if (isInternal) {
+        return (
+            <li>
+                <Link
+                    to={href}
+                    className="text-slate-400 hover:text-white transition-colors flex items-center gap-1 group"
+                >
+                    <span className="w-0 group-hover:w-2 transition-all duration-300 h-0.5 bg-primary rounded-full"></span>
+                    {children}
+                </Link>
+            </li>
+        );
+    }
+
+    return (
+        <li>
+            <a
+                href={href}
+                className="text-slate-400 hover:text-white transition-colors flex items-center gap-1 group"
+            >
+                <span className="w-0 group-hover:w-2 transition-all duration-300 h-0.5 bg-primary rounded-full"></span>
+                {children}
+            </a>
+        </li>
+    );
+};
 
 export default Footer;

@@ -1,41 +1,37 @@
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Hero from "./components/Hero";
-import Features from "./components/Features";
-import HowItWorks from "./components/HowItWorks";
-import Statistics from "./components/Statistics";
-import ForBusinesses from "./components/ForBusinesses";
-import Testimonials from "./components/Testimonials";
-import FAQ from "./components/FAQ";
-import DownloadCTA from "./components/DownloadCTA";
+import Home from "./pages/Home";
+import LegalPrivacy from "./pages/LegalPrivacy";
+import LegalTerms from "./pages/LegalTerms";
+import LegalCookie from "./pages/LegalCookie";
+import AboutUs from "./pages/AboutUs";
 import ScrollToTop from "./components/ScrollToTopHandler";
 import Meta from "./components/Meta";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   return (
     <HelmetProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Meta />
         <ScrollToTop />
         <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
           <Navbar />
 
-          <main>
-            <Hero />
-            <Statistics />
-            <Features />
-            <HowItWorks />
-            <ForBusinesses />
-            <Testimonials />
-            <FAQ />
-            <DownloadCTA />
-          </main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/privacy" element={<LegalPrivacy />} />
+            <Route path="/terms" element={<LegalTerms />} />
+            <Route path="/cookie-policy" element={<LegalCookie />} />
+            <Route path="/about" element={<AboutUs />} />
+            {/* Catch-all to redirect back home if path is wrong */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
 
           <Footer />
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </HelmetProvider>
   );
 }
