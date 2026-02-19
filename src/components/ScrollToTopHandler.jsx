@@ -5,19 +5,21 @@ export default function ScrollToTop() {
     const { pathname, hash } = useLocation();
 
     useEffect(() => {
-        // If there's no hash (section ID), jump to top immediately
-        // This is important for page transitions to feel snappy and correct
-        if (!hash) {
-            window.scrollTo({
-                top: 0,
-                behavior: "auto"
-            });
-        } else {
-            // For hash links (like #features), wait for components to render
+        const sectionPaths = {
+            '/features': 'features',
+            '/how-it-works': 'how-it-works',
+            '/business': 'business',
+            '/faq': 'faq',
+            '/hero': 'hero'
+        };
+
+        const targetId = sectionPaths[pathname] || (hash ? hash.replace('#', '') : null);
+
+        if (targetId) {
+            // For hash links (like #features) or path sections, wait for components to render
             // then smooth scroll to the target
             const scrollToElement = () => {
-                const id = hash.replace('#', '');
-                const element = document.getElementById(id);
+                const element = document.getElementById(targetId);
                 if (element) {
                     const offset = 80; // Navbar height approx
                     const bodyRect = document.body.getBoundingClientRect().top;
@@ -35,6 +37,12 @@ export default function ScrollToTop() {
             // Short delay to allow the new page/component to mount
             const timer = setTimeout(scrollToElement, 100);
             return () => clearTimeout(timer);
+        } else {
+            // If there's no hash or section path, jump to top immediately
+            window.scrollTo({
+                top: 0,
+                behavior: "auto"
+            });
         }
     }, [pathname, hash]);
 

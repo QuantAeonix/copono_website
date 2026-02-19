@@ -21,9 +21,9 @@ const Footer = () => {
                             Join thousands of savvy shoppers today.
                         </p>
                         <div className="flex items-center gap-4">
-                            <SocialLink href="#" icon={<Facebook className="w-5 h-5" />} />
-                            <SocialLink href="#" icon={<Instagram className="w-5 h-5" />} />
-                            <SocialLink href="#" icon={<Twitter className="w-5 h-5" />} />
+                            <SocialLink icon={<Facebook className="w-5 h-5" />} />
+                            <SocialLink icon={<Instagram className="w-5 h-5" />} />
+                            <SocialLink icon={<Twitter className="w-5 h-5" />} />
                         </div>
                     </div>
 
@@ -32,9 +32,9 @@ const Footer = () => {
                         <h3 className="text-white font-semibold text-lg mb-6">Company</h3>
                         <ul className="space-y-4">
                             <FooterLink href="/about">About Us</FooterLink>
-                            <FooterLink href="/#features">Features</FooterLink>
-                            <FooterLink href="/#business">Careers</FooterLink>
-                            <FooterLink href="#">Press Kit</FooterLink>
+                            <FooterLink href="/features">Features</FooterLink>
+                            <FooterLink href="/business">Careers</FooterLink>
+                            <FooterLink>Press Kit</FooterLink>
                         </ul>
                     </div>
 
@@ -42,7 +42,7 @@ const Footer = () => {
                     <div>
                         <h3 className="text-white font-semibold text-lg mb-6">Resources</h3>
                         <ul className="space-y-4">
-                            <FooterLink href="/#faq">Help Center</FooterLink>
+                            <FooterLink href="/faq">Help Center</FooterLink>
                             <FooterLink href="/privacy">Privacy Policy</FooterLink>
                             <FooterLink href="/terms">Terms of Service</FooterLink>
                             <FooterLink href="/cookie-policy">Cookie Policy</FooterLink>
@@ -93,8 +93,8 @@ const SocialLink = ({ href, icon }) => (
     </a>
 );
 
-const FooterLink = ({ href, children }) => {
-    const isInternal = href.startsWith('/');
+const FooterLink = ({ href = "#", children }) => {
+    const isInternal = href && href.startsWith('/');
 
     if (isInternal) {
         return (

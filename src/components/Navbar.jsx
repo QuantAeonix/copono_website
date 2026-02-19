@@ -24,12 +24,12 @@ const Navbar = () => {
     }, []);
 
     const navLinks = [
-        { name: "Home", href: "#hero" },
-        { name: "Features", href: "#features" },
+        { name: "Home", href: "" },
+        { name: "Features", href: "features" },
         { name: "About", href: "about" },
-        { name: "How It Works", href: "#how-it-works" },
-        { name: "For Businesses", href: "#business" },
-        { name: "FAQ", href: "#faq" },
+        { name: "How It Works", href: "how-it-works" },
+        { name: "For Businesses", href: "business" },
+        { name: "FAQ", href: "faq" },
     ];
 
     return (

@@ -7,13 +7,13 @@ import LegalCookie from "./pages/LegalCookie";
 import AboutUs from "./pages/AboutUs";
 import ScrollToTop from "./components/ScrollToTopHandler";
 import Meta from "./components/Meta";
-import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   return (
     <HelmetProvider>
-      <HashRouter>
+      <BrowserRouter>
         <Meta />
         <ScrollToTop />
         <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
@@ -21,6 +21,10 @@ function App() {
 
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/features" element={<Home />} />
+            <Route path="/how-it-works" element={<Home />} />
+            <Route path="/business" element={<Home />} />
+            <Route path="/faq" element={<Home />} />
             <Route path="/privacy" element={<LegalPrivacy />} />
             <Route path="/terms" element={<LegalTerms />} />
             <Route path="/cookie-policy" element={<LegalCookie />} />
@@ -31,7 +35,7 @@ function App() {
 
           <Footer />
         </div>
-      </HashRouter>
+      </BrowserRouter>
     </HelmetProvider>
   );
 }
