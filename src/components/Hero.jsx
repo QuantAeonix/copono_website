@@ -33,7 +33,7 @@ const Hero = () => {
                                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                                     <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                                 </span>
-                                1 Rewards Platform
+                                #1 Rewards Platform
                             </span>
 
                             <h1 className="text-4xl md:text-6xl font-bold font-heading tracking-tight text-slate-900 leading-[1.1] mb-6">
@@ -49,11 +49,11 @@ const Hero = () => {
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                                <Button aria-label="Download on App Store" className="h-14 px-8 bg-slate-900 hover:bg-slate-800 text-white rounded-full shadow-xl shadow-slate-900/20 text-base">
+                                <Button aria-label="Download on App Store" className="h-14 px-8 bg-slate-900 hover:bg-slate-800 text-white rounded-full shadow-xl shadow-slate-900/20 text-base" onClick={() => window.open('#', '_blank')}>
                                     <Apple className="mr-2 h-5 w-5" />
                                     App Store
                                 </Button>
-                                <Button aria-label="Get it on Google Play" className="h-14 px-8 bg-white hover:bg-slate-50 text-slate-900 border-2 border-slate-200 rounded-full text-base">
+                                <Button aria-label="Get it on Google Play" className="h-14 px-8 bg-white hover:bg-slate-50 text-slate-900 border-2 border-slate-200 rounded-full text-base" onClick={() => window.open('#', '_blank')}>
                                     <Play className="mr-2 h-5 w-5 fill-current" />
                                     Google Play
                                 </Button>
