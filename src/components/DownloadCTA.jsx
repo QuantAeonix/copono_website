@@ -1,81 +1,105 @@
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Apple, Play } from "lucide-react";
+import { Smartphone, Download, Gift, Star, ChevronRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const DownloadCTA = () => {
+    const { t, i18n } = useTranslation();
+    const isRTL = i18n.language === 'ar';
+
     return (
-        <section id="download" className="py-24 bg-primary overflow-hidden relative">
-            {/* Background patterns */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] rounded-full bg-white/10 blur-[100px]" />
-                <div className="absolute bottom-[10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-white/5 blur-[80px]" />
-            </div>
-
+        <section id="download" className="py-16 md:py-24 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
+            <div className="absolute start-1/4 top-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl" />
             <div className="container mx-auto px-4 md:px-6 relative z-10">
-                <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
+                <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-8 md:p-16 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-blue-600/10 opacity-50" />
+                    <div className="absolute top-0 end-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px]" />
 
-                    {/* Text Content */}
-                    <div className="lg:w-1/2 text-center lg:text-left text-white">
-                        <h2 className="text-3xl md:text-5xl font-bold font-heading mb-6 leading-tight">
-                            Ready to Start Saving?
-                        </h2>
-                        <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                            Download the Copono app today and join the community of smart shoppers earning rewards on every purchase.
-                        </p>
+                    <div className="grid lg:grid-cols-2 gap-12 items-center relative z-10">
+                        {/* Content */}
+                        <div>
+                            <motion.h2
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                className="text-3xl md:text-5xl font-bold font-heading text-white mb-6 tracking-tight leading-tight"
+                            >
+                                {t("downloadCta.title")}
+                            </motion.h2>
+                            <motion.p
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.1 }}
+                                className="text-slate-400 text-lg mb-8 leading-relaxed"
+                            >
+                                {t("downloadCta.description")}
+                            </motion.p>
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2 }}
+                                className="flex flex-col sm:flex-row gap-3"
+                            >
+                                <Button
+                                    size="lg"
+                                    className="bg-white text-slate-900 hover:bg-slate-100 rounded-full px-6 py-6 text-base shadow-xl hover:scale-105 active:scale-95 transition-all group gap-2"
+                                >
+                                    <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" /></svg>
+                                    {t("downloadCta.appStore")}
+                                </Button>
+                                <Button
+                                    asChild
+                                    size="lg"
+                                    className="bg-white/10 hover:bg-white/20 text-white border-2 border-white/30 rounded-full px-6 py-6 text-base hover:scale-105 active:scale-95 transition-all group gap-2 backdrop-blur-sm"
+                                >
+                                    <a href="https://play.google.com/store/apps/details?id=com.copono.copono" target="_blank" rel="noopener noreferrer">
+                                        <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 1.33a1 1 0 010 1.73l-2.302 1.33-2.535-2.535 2.535-2.535zM5.864 3.458L16.8 9.79l-2.302 2.302-8.634-8.634z" /></svg>
+                                        {t("downloadCta.googlePlay")}
+                                    </a>
+                                </Button>
+                            </motion.div>
 
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                            <Button className="h-16 px-8 bg-slate-900 hover:bg-slate-800 text-white rounded-full shadow-xl shadow-slate-900/20 text-lg transition-transform hover:scale-105">
-                                <Apple className="mr-2 h-6 w-6" />
-                                App Store
-                            </Button>
-                            <Button className="h-16 px-8 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-xl shadow-black/10 text-lg transition-transform hover:scale-105">
-                                <Play className="mr-2 h-6 w-6 fill-current" />
-                                Google Play
-                            </Button>
+                            <p className="text-slate-500 text-xs mt-4">{t("downloadCta.footnote")}</p>
                         </div>
 
-                        <p className="mt-6 text-sm text-blue-200">
-                            *Available on iOS and Android. Free forever.
-                        </p>
-                    </div>
-
-                    {/* CTA Image / Mockup */}
-                    <div className="lg:w-1/2 flex justify-center lg:justify-end">
-                        <div className="relative w-[300px] md:w-[320px] aspect-[9/18] bg-slate-900 rounded-[3rem] shadow-2xl border-[8px] border-slate-900 overflow-hidden transform rotate-[-5deg] hover:rotate-0 transition-transform duration-500">
-                            {/* Screen Content */}
-                            <div className="absolute inset-0 bg-white flex flex-col">
-                                {/* Header */}
-                                <div className="h-24 bg-primary p-6 pt-10 text-white">
-                                    <div className="flex justify-between items-center">
-                                        <div className="font-bold text-lg">My Rewards</div>
-                                        <div className="text-xs bg-white/20 px-2 py-1 rounded">2,450 pts</div>
-                                    </div>
-                                </div>
-
-                                {/* Body - Coupons List */}
-                                <div className="flex-1 p-4 space-y-3 bg-slate-50">
-                                    {[1, 2, 3, 4].map((i) => (
-                                        <div key={i} className="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex gap-3 items-center">
-                                            <div className={`w-12 h-12 rounded-lg ${i % 2 === 0 ? 'bg-orange-100 text-orange-500' : 'bg-blue-100 text-blue-500'} flex items-center justify-center font-bold`}>
-                                                {i % 2 === 0 ? '%' : '$'}
-                                            </div>
-                                            <div className="flex-1">
-                                                <div className="font-bold text-slate-900 text-sm mb-0.5">{i % 2 === 0 ? 'Starbucks' : 'Target'}</div>
-                                                <div className="text-[10px] text-slate-500">{i % 2 === 0 ? '15% Cashback' : '$10 Off'}</div>
-                                            </div>
+                        {/* Phone mockup */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 }}
+                            className="hidden lg:flex justify-center"
+                        >
+                            <div className="relative">
+                                <div className="w-[260px] bg-slate-800 rounded-[2.5rem] p-3 border border-slate-700/50 shadow-2xl">
+                                    <div className="bg-white rounded-[2rem] overflow-hidden">
+                                        <div className="bg-gradient-to-br from-primary to-blue-600 p-6 text-center">
+                                            <Gift className="w-10 h-10 text-white mx-auto mb-3" />
+                                            <h3 className="text-white font-bold text-lg mb-1">{t("downloadCta.myRewards")}</h3>
+                                            <p className="text-blue-100 text-xs">2,450 pts</p>
                                         </div>
-                                    ))}
-                                </div>
-
-                                {/* Floating 'Get It' Badge */}
-                                <div className="absolute bottom-8 left-0 right-0 flex justify-center">
-                                    <div className="bg-slate-900 text-white px-6 py-3 rounded-full font-bold shadow-lg text-sm">
-                                        Download Now
+                                        <div className="p-4 space-y-3">
+                                            <button className="w-full bg-primary text-white py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2">
+                                                <Download className="w-4 h-4" />
+                                                {t("downloadCta.downloadNow")}
+                                            </button>
+                                            {[t("downloadCta.cashback"), t("downloadCta.tenOff")].map((reward, i) => (
+                                                <div key={i} className="flex items-center justify-between bg-slate-50 rounded-xl p-3">
+                                                    <div className="flex items-center gap-2">
+                                                        <Star className="w-4 h-4 text-amber-400" />
+                                                        <span className="text-xs font-medium text-slate-700">{reward}</span>
+                                                    </div>
+                                                    <ChevronRight className={`w-4 h-4 text-slate-400 ${isRTL ? 'rotate-180' : ''}`} />
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
-
                 </div>
             </div>
         </section>

@@ -10,7 +10,8 @@ export default function ScrollToTop() {
             '/how-it-works': 'how-it-works',
             '/business': 'business',
             '/faq': 'faq',
-            '/hero': 'hero'
+            '/hero': 'hero',
+            '/download': 'download'
         };
 
         const targetId = sectionPaths[pathname] || (hash ? hash.replace('#', '') : null);

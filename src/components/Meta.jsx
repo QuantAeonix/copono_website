@@ -1,26 +1,29 @@
 import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 
 const Meta = ({ title, description, image }) => {
-    const siteTitle = "Copono - Smart Shopping Rewards";
-    const siteDescription = "Join Copono to earn points on every receipt. Discover exclusive coupons for thousands of brands and turn your shopping into real rewards.";
-    const siteImage = "/og-image.jpg"; // Placeholder path
+    const { t } = useTranslation();
+
+    const siteTitle = title || t("meta.siteTitle");
+    const siteDescription = description || t("meta.siteDescription");
+    const siteImage = image || "/og-image.png";
 
     return (
         <Helmet>
-            <title>{title ? `${title} | Copono` : siteTitle}</title>
-            <meta name="description" content={description || siteDescription} />
+            <title>{siteTitle}</title>
+            <meta name="description" content={siteDescription} />
 
             {/* Open Graph */}
-            <meta property="og:title" content={title || siteTitle} />
-            <meta property="og:description" content={description || siteDescription} />
-            <meta property="og:image" content={image || siteImage} />
+            <meta property="og:title" content={siteTitle} />
+            <meta property="og:description" content={siteDescription} />
+            <meta property="og:image" content={siteImage} />
             <meta property="og:type" content="website" />
 
             {/* Twitter */}
             <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:title" content={title || siteTitle} />
-            <meta name="twitter:description" content={description || siteDescription} />
-            <meta name="twitter:image" content={image || siteImage} />
+            <meta name="twitter:title" content={siteTitle} />
+            <meta name="twitter:description" content={siteDescription} />
+            <meta name="twitter:image" content={siteImage} />
         </Helmet>
     );
 };

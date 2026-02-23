@@ -1,37 +1,7 @@
-import { motion, useSpring, useTransform, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion, useSpring, useTransform } from "framer-motion";
+import { useEffect } from "react";
 import { Users, Store, Trophy, FileCheck } from "lucide-react";
-
-const stats = [
-    {
-        id: 1,
-        label: "Active Users",
-        value: 50000,
-        suffix: "+",
-        icon: <Users className="w-8 h-8 text-blue-500" />
-    },
-    {
-        id: 2,
-        label: "Partner Stores",
-        value: 1000,
-        suffix: "+",
-        icon: <Store className="w-8 h-8 text-purple-500" />
-    },
-    {
-        id: 3,
-        label: "Points Earned",
-        value: 5000000,
-        suffix: "+",
-        icon: <Trophy className="w-8 h-8 text-amber-500" />
-    },
-    {
-        id: 4,
-        label: "Receipts Verified",
-        value: 100000,
-        suffix: "+",
-        icon: <FileCheck className="w-8 h-8 text-green-500" />
-    }
-];
+import { useTranslation } from "react-i18next";
 
 const Counter = ({ value }) => {
     const spring = useSpring(0, { mass: 0.8, stiffness: 75, damping: 15 });
@@ -56,6 +26,39 @@ const Counter = ({ value }) => {
 };
 
 const Statistics = () => {
+    const { t } = useTranslation();
+
+    const stats = [
+        {
+            id: 1,
+            label: t("statistics.activeUsers"),
+            value: 50000,
+            suffix: "+",
+            icon: <Users className="w-8 h-8 text-blue-500" />
+        },
+        {
+            id: 2,
+            label: t("statistics.partnerStores"),
+            value: 1000,
+            suffix: "+",
+            icon: <Store className="w-8 h-8 text-purple-500" />
+        },
+        {
+            id: 3,
+            label: t("statistics.pointsEarned"),
+            value: 5000000,
+            suffix: "+",
+            icon: <Trophy className="w-8 h-8 text-amber-500" />
+        },
+        {
+            id: 4,
+            label: t("statistics.receiptsVerified"),
+            value: 100000,
+            suffix: "+",
+            icon: <FileCheck className="w-8 h-8 text-green-500" />
+        }
+    ];
+
     return (
         <section id="statistics" className="py-20 bg-slate-900 text-white relative overflow-hidden">
             {/* Background glow */}

@@ -1,65 +1,56 @@
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from "@/components/ui/accordion";
-
-const faqs = [
-    {
-        question: "Is Copono free to use?",
-        answer: "Yes, Copono is completely free for shoppers! You can download the app, browse coupons, and earn rewards without paying a dime."
-    },
-    {
-        question: "How do I earn points?",
-        answer: "You earn points by uploading receipts from partner stores, engaging with daily challenges, and inviting friends to the platform."
-    },
-    {
-        question: "Where can I redeem my rewards?",
-        answer: "Points can be redeemed for gift cards, cash back, or exclusive discounts at our partner retailers directly within the app."
-    },
-    {
-        question: "How does the receipt verification work?",
-        answer: "Simply snap a photo of your receipt using the app. Our AI technology scans and verifies the purchase details to award your points instantly."
-    },
-    {
-        question: "Can I use Copono for online shopping?",
-        answer: "Absolutely! We have digital coupons for thousands of online stores. You can also link your email to track online receipts automatically."
-    },
-    {
-        question: "I'm a business owner, how can I join?",
-        answer: "We'd love to have you! Click the 'Become a Partner' button in the Business section to sign up and start creating campaigns for your store."
-    }
-];
+import { motion } from "framer-motion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { useTranslation } from "react-i18next";
 
 const FAQ = () => {
-    return (
-        <section id="faq" className="py-24 bg-white">
-            <div className="container mx-auto px-4 md:px-6 max-w-3xl">
-                <div className="text-center mb-16">
-                    <span className="text-primary font-semibold tracking-wider text-sm uppercase mb-2 block">
-                        Support
-                    </span>
-                    <h2 className="text-3xl md:text-4xl font-bold font-heading text-slate-900 mb-4">
-                        Frequently Asked Questions
-                    </h2>
-                    <p className="text-slate-600 text-lg">
-                        Have questions? We've got answers. If you need more help, feel free to contact our support team.
-                    </p>
-                </div>
+    const { t } = useTranslation();
 
-                <Accordion type="single" collapsible className="w-full">
-                    {faqs.map((faq, index) => (
-                        <AccordionItem key={index} value={`item-${index}`} className="border-b border-slate-100 mb-4">
-                            <AccordionTrigger className="text-left text-lg font-medium text-slate-900 hover:text-primary py-6 transition-colors [&[data-state=open]]:text-primary">
-                                {faq.question}
-                            </AccordionTrigger>
-                            <AccordionContent className="text-slate-600 leading-relaxed text-base pb-6">
-                                {faq.answer}
-                            </AccordionContent>
-                        </AccordionItem>
-                    ))}
-                </Accordion>
+    const faqs = [
+        { question: t("faq.q1"), answer: t("faq.a1") },
+        { question: t("faq.q2"), answer: t("faq.a2") },
+        { question: t("faq.q3"), answer: t("faq.a3") },
+        { question: t("faq.q4"), answer: t("faq.a4") },
+        { question: t("faq.q5"), answer: t("faq.a5") },
+        { question: t("faq.q6"), answer: t("faq.a6") },
+    ];
+
+    return (
+        <section id="faq" className="py-12 md:py-24 bg-white">
+            <div className="container mx-auto px-4 md:px-6">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-center max-w-2xl mx-auto mb-12"
+                >
+                    <span className="text-primary font-semibold text-sm tracking-wider uppercase">{t("faq.subtitle")}</span>
+                    <h2 className="text-2xl md:text-5xl font-bold font-heading mt-3 mb-4 tracking-tight text-slate-900">
+                        {t("faq.title")}
+                    </h2>
+                    <p className="text-slate-600 text-sm md:text-lg leading-relaxed">
+                        {t("faq.description")}
+                    </p>
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="max-w-3xl mx-auto"
+                >
+                    <Accordion type="single" collapsible>
+                        {faqs.map((faq, index) => (
+                            <AccordionItem key={index} value={`item-${index}`} className="border-b border-slate-100 mb-4">
+                                <AccordionTrigger className="text-start text-lg font-medium text-slate-900 hover:text-primary py-6 transition-colors [&[data-state=open]]:text-primary">
+                                    {faq.question}
+                                </AccordionTrigger>
+                                <AccordionContent className="text-slate-600 leading-relaxed text-base pb-6">
+                                    {faq.answer}
+                                </AccordionContent>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
+                </motion.div>
             </div>
         </section>
     );

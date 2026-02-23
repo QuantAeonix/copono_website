@@ -1,125 +1,79 @@
-import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Instagram, Twitter, Facebook, Youtube } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+    const { t } = useTranslation();
+
+    const currentYear = new Date().getFullYear();
+
     return (
-        <footer className="bg-slate-950 text-slate-300 pt-20 pb-10">
+        <footer className="bg-slate-900 text-slate-400 pt-16 pb-8">
             <div className="container mx-auto px-4 md:px-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-                    {/* Brand Column */}
-                    <div className="space-y-6">
-                        <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-lg">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 pb-12 border-b border-slate-800">
+                    {/* Brand */}
+                    <div className="col-span-2 md:col-span-1">
+                        <Link to="/" className="flex items-center gap-2 mb-4">
+                            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-primary/30">
                                 C
                             </div>
-                            <span className="text-2xl font-bold font-heading text-white">
-                                Copono
-                            </span>
-                        </div>
-                        <p className="text-slate-400 leading-relaxed">
-                            Shop smarter, save more, and earn rewards with every receipt.
-                            Join thousands of savvy shoppers today.
+                            <span className="text-xl font-bold text-white font-heading">Copono</span>
+                        </Link>
+                        <p className="text-sm leading-relaxed max-w-xs">
+                            {t("footer.tagline")}
                         </p>
-                        <div className="flex items-center gap-4">
-                            <SocialLink icon={<Facebook className="w-5 h-5" />} />
-                            <SocialLink icon={<Instagram className="w-5 h-5" />} />
-                            <SocialLink icon={<Twitter className="w-5 h-5" />} />
+                        <div className="flex gap-3 mt-6">
+                            {[Instagram, Twitter, Facebook, Youtube].map((Icon, i) => (
+                                <a key={i} href="#" className="w-9 h-9 bg-slate-800 hover:bg-primary/20 hover:text-primary rounded-lg flex items-center justify-center transition-colors">
+                                    <Icon className="w-4 h-4" />
+                                </a>
+                            ))}
                         </div>
                     </div>
 
-                    {/* Quick Links */}
+                    {/* Company */}
                     <div>
-                        <h3 className="text-white font-semibold text-lg mb-6">Company</h3>
-                        <ul className="space-y-4">
-                            <FooterLink href="/about">About Us</FooterLink>
-                            <FooterLink href="/features">Features</FooterLink>
-                            <FooterLink href="/business">Careers</FooterLink>
-                            <FooterLink>Press Kit</FooterLink>
+                        <h4 className="text-white font-bold text-sm mb-4">{t("footer.company")}</h4>
+                        <ul className="space-y-3 text-sm">
+                            <li><Link to="/about" className="hover:text-primary transition-colors">{t("footer.aboutUs")}</Link></li>
+                            <li><Link to="/features" className="hover:text-primary transition-colors">{t("footer.features")}</Link></li>
+                            <li><a href="#" className="hover:text-primary transition-colors">{t("footer.careers")}</a></li>
+                            <li><a href="#" className="hover:text-primary transition-colors">{t("footer.pressKit")}</a></li>
                         </ul>
                     </div>
 
                     {/* Resources */}
                     <div>
-                        <h3 className="text-white font-semibold text-lg mb-6">Resources</h3>
-                        <ul className="space-y-4">
-                            <FooterLink href="/faq">Help Center</FooterLink>
-                            <FooterLink href="/privacy">Privacy Policy</FooterLink>
-                            <FooterLink href="/terms">Terms of Service</FooterLink>
-                            <FooterLink href="/cookie-policy">Cookie Policy</FooterLink>
+                        <h4 className="text-white font-bold text-sm mb-4">{t("footer.resources")}</h4>
+                        <ul className="space-y-3 text-sm">
+                            <li><a href="#" className="hover:text-primary transition-colors">{t("footer.helpCenter")}</a></li>
+                            <li><Link to="/privacy" className="hover:text-primary transition-colors">{t("footer.privacyPolicy")}</Link></li>
+                            <li><Link to="/terms" className="hover:text-primary transition-colors">{t("footer.termsOfService")}</Link></li>
+                            <li><Link to="/cookie-policy" className="hover:text-primary transition-colors">{t("footer.cookiePolicy")}</Link></li>
                         </ul>
                     </div>
 
-                    {/* Contact */}
                     <div>
-                        <h3 className="text-white font-semibold text-lg mb-6">Contact</h3>
-                        <ul className="space-y-4">
-                            <li className="flex items-start gap-3">
-                                <Mail className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-                                <span>support@copono.com</span>
-                            </li>
-                            <li className="flex items-start gap-3">
-                                <Phone className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-                                <span>+1 (555) 123-4567</span>
-                            </li>
-                            <li className="flex items-start gap-3">
-                                <MapPin className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-                                <span>123 Savings Ave, Tech City, TC 90210</span>
-                            </li>
+                        <h4 className="text-white font-bold text-sm mb-4">{t("footer.contact")}</h4>
+                        <ul className="space-y-3 text-sm">
+                            <li><Link to="/contact" className="hover:text-primary transition-colors">{t("navbar.about") === "من نحن" ? "تواصل معنا" : "Contact Us"}</Link></li>
+                            <li><a href="mailto:support@copono.com" className="hover:text-primary transition-colors">{t("footer.email")}</a></li>
+                            <li><a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">{t("footer.whatsapp")}</a></li>
                         </ul>
                     </div>
                 </div>
 
-                <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-sm text-slate-500">
-                        © {new Date().getFullYear()} Copono. All rights reserved.
-                    </p>
-                    <div className="flex items-center gap-6 text-sm text-slate-500">
-                        <Link to="/privacy" className="hover:text-white transition-colors">Privacy</Link>
-                        <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
-                        <Link to="/cookie-policy" className="hover:text-white transition-colors">Cookies</Link>
+                {/* Bottom Bar */}
+                <div className="flex flex-col md:flex-row justify-between items-center pt-8 gap-4 text-xs">
+                    <p>{t("footer.copyright", { year: currentYear })}</p>
+                    <div className="flex gap-6">
+                        <Link to="/privacy" className="hover:text-primary transition-colors">{t("footer.privacy")}</Link>
+                        <Link to="/terms" className="hover:text-primary transition-colors">{t("footer.terms")}</Link>
+                        <Link to="/cookie-policy" className="hover:text-primary transition-colors">{t("footer.cookies")}</Link>
                     </div>
                 </div>
             </div>
         </footer>
-    );
-};
-
-const SocialLink = ({ href, icon }) => (
-    <a
-        href={href}
-        className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
-    >
-        {icon}
-    </a>
-);
-
-const FooterLink = ({ href = "#", children }) => {
-    const isInternal = href && href.startsWith('/');
-
-    if (isInternal) {
-        return (
-            <li>
-                <Link
-                    to={href}
-                    className="text-slate-400 hover:text-white transition-colors flex items-center gap-1 group"
-                >
-                    <span className="w-0 group-hover:w-2 transition-all duration-300 h-0.5 bg-primary rounded-full"></span>
-                    {children}
-                </Link>
-            </li>
-        );
-    }
-
-    return (
-        <li>
-            <a
-                href={href}
-                className="text-slate-400 hover:text-white transition-colors flex items-center gap-1 group"
-            >
-                <span className="w-0 group-hover:w-2 transition-all duration-300 h-0.5 bg-primary rounded-full"></span>
-                {children}
-            </a>
-        </li>
     );
 };
 
