@@ -96,9 +96,9 @@ const Hero = () => {
                             className="flex flex-wrap gap-4 pt-2 justify-center lg:justify-start"
                         >
                             {[
-                                { value: "10K+", label: t("hero.statUsers"), icon: <Star className="w-4 h-4 text-amber-500" /> },
-                                { value: "500+", label: t("hero.statStores"), icon: <Shield className="w-4 h-4 text-emerald-500" /> },
-                                { value: "1M+", label: t("hero.statPoints"), icon: <Zap className="w-4 h-4 text-violet-500" /> },
+                                { value: "500+", label: t("hero.statUsers"), icon: <Star className="w-4 h-4 text-amber-500" /> },
+                                { value: "10+", label: t("hero.statStores"), icon: <Shield className="w-4 h-4 text-emerald-500" /> },
+                                { value: "10K+", label: t("hero.statPoints"), icon: <Zap className="w-4 h-4 text-violet-500" /> },
                             ].map((stat, i) => (
                                 <div
                                     key={i}

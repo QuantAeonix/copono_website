@@ -69,7 +69,7 @@ const ForBusinesses = () => {
                         </Button>
                     </motion.div>
 
-                    {/* Visual Mockup - with original chart hover tooltips */}
+                    {/* Visual Mockup */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -88,7 +88,7 @@ const ForBusinesses = () => {
                                 <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
                             </div>
 
-                            <div className="p-4 sm:p-6 h-full flex items-center justify-center bg-slate-900/50">
+                            <div className="p-4 sm:p-6 h-full flex flex-col justify-center bg-slate-900/50">
                                 <div className="w-full max-w-md space-y-6">
                                     <div className="grid grid-cols-3 gap-2 sm:gap-4">
                                         <div className="p-2 sm:p-3 bg-slate-800 rounded-lg border border-slate-700">
@@ -96,24 +96,25 @@ const ForBusinesses = () => {
                                             <div className="h-1.5 sm:h-2 w-full bg-blue-500/20 rounded-full mb-1">
                                                 <div className="h-full w-[70%] bg-blue-500 rounded-full"></div>
                                             </div>
-                                            <div className="text-sm sm:text-lg font-bold text-white">2.4k</div>
+                                            <div className="text-sm sm:text-lg font-bold text-white">600</div>
                                         </div>
                                         <div className="p-2 sm:p-3 bg-slate-800 rounded-lg border border-slate-700">
                                             <div className="text-[10px] sm:text-xs text-slate-500 mb-1">{t("forBusinesses.sales")}</div>
                                             <div className="h-1.5 sm:h-2 w-full bg-green-500/20 rounded-full mb-1">
                                                 <div className="h-full w-[85%] bg-green-500 rounded-full"></div>
                                             </div>
-                                            <div className="text-sm sm:text-lg font-bold text-white">$12k</div>
+                                            <div className="text-sm sm:text-lg font-bold text-white">$4k</div>
                                         </div>
                                         <div className="p-2 sm:p-3 bg-slate-800 rounded-lg border border-slate-700">
                                             <div className="text-[10px] sm:text-xs text-slate-500 mb-1">{t("forBusinesses.growth")}</div>
                                             <div className="h-1.5 sm:h-2 w-full bg-purple-500/20 rounded-full mb-1">
                                                 <div className="h-full w-[40%] bg-purple-500 rounded-full"></div>
                                             </div>
-                                            <div className="text-sm sm:text-lg font-bold text-white">+24%</div>
+                                            <div className="text-sm sm:text-lg font-bold text-white">+10%</div>
                                         </div>
                                     </div>
-                                    <div className="h-48 bg-slate-800 rounded-lg w-full flex items-end justify-between p-4 px-4 sm:px-6 border border-slate-700 relative overflow-hidden">
+
+                                    <div className="h-40 sm:h-48 bg-slate-800 rounded-lg w-full flex items-end justify-between p-4 px-4 sm:px-6 border border-slate-700 relative overflow-hidden">
                                         {/* Chart Lines Grid */}
                                         <div className="absolute inset-x-4 sm:inset-x-6 inset-y-4 flex flex-col justify-between opacity-10 pointer-events-none">
                                             <div className="border-t border-white"></div>
@@ -122,13 +123,13 @@ const ForBusinesses = () => {
                                             <div className="border-t border-white"></div>
                                         </div>
 
-                                        {[40, 70, 50, 90, 60, 80, 65, 85].map((h, i) => (
+                                        {[20, 35, 25, 45, 30, 40, 32, 42].map((h, i) => (
                                             <motion.div
                                                 key={i}
                                                 initial={{ height: 0 }}
                                                 animate={{ height: `${h}%` }}
                                                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                                                className="w-6 bg-gradient-to-t from-primary/50 to-primary rounded-t-sm relative group"
+                                                className="w-4 sm:w-6 bg-gradient-to-t from-primary/50 to-primary rounded-t-sm relative group"
                                             >
                                                 <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-white text-slate-900 text-[8px] sm:text-[10px] px-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-bold z-10">
                                                     {h}%

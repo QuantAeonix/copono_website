@@ -32,28 +32,28 @@ const Statistics = () => {
         {
             id: 1,
             label: t("statistics.activeUsers"),
-            value: 50000,
+            value: 500,
             suffix: "+",
             icon: <Users className="w-8 h-8 text-blue-500" />
         },
         {
             id: 2,
             label: t("statistics.partnerStores"),
-            value: 1000,
+            value: 15,
             suffix: "+",
             icon: <Store className="w-8 h-8 text-purple-500" />
         },
         {
             id: 3,
             label: t("statistics.pointsEarned"),
-            value: 5000000,
+            value: 10000,
             suffix: "+",
             icon: <Trophy className="w-8 h-8 text-amber-500" />
         },
         {
             id: 4,
             label: t("statistics.receiptsVerified"),
-            value: 100000,
+            value: 100,
             suffix: "+",
             icon: <FileCheck className="w-8 h-8 text-green-500" />
         }

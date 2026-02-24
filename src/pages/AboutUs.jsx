@@ -48,9 +48,9 @@ const AboutUs = () => {
                         {/* Stats row */}
                         <div className="flex flex-wrap justify-center gap-8 mt-12">
                             {[
-                                { value: "50K+", label: t("about.statUsers") },
-                                { value: "200+", label: t("about.statStores") },
-                                { value: "1M+", label: t("about.statPoints") },
+                                { value: "500+", label: t("about.statUsers") },
+                                { value: "10+", label: t("about.statStores") },
+                                { value: "10K+", label: t("about.statPoints") },
                             ].map((stat, i) => (
                                 <motion.div
                                     key={i}
@@ -113,9 +113,9 @@ const AboutUs = () => {
                                 <h3 className="text-2xl font-bold mb-4">{t("about.joinMovement")}</h3>
                                 <div className="space-y-4">
                                     {[
-                                        { label: t("about.statUsers"), value: "50,000+" },
-                                        { label: t("about.statStores"), value: "200+" },
-                                        { label: t("about.statPoints"), value: "1,000,000+" },
+                                        { label: t("about.statUsers"), value: "500+" },
+                                        { label: t("about.statStores"), value: "10+" },
+                                        { label: t("about.statPoints"), value: "10,000+" },
                                     ].map((stat, i) => (
                                         <div key={i} className="flex items-center justify-between py-3 border-b border-white/20 last:border-0">
                                             <span className="text-blue-100">{stat.label}</span>

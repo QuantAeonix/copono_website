@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { Menu, Globe, ChevronDown } from "lucide-react";
@@ -11,6 +12,7 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [langOpen, setLangOpen] = useState(false);
     const langRef = useRef(null);
+    const [activeSection, setActiveSection] = useState("");
     const { pathname } = useLocation();
     const navigate = useNavigate();
     const { t, i18n } = useTranslation();
@@ -29,6 +31,38 @@ const Navbar = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    // Scroll Spy Logic
+    useEffect(() => {
+        if (pathname !== "/") {
+            setActiveSection("");
+            return;
+        }
+
+        const sections = ["hero", "features", "how-it-works", "business", "faq"];
+        const observerOptions = {
+            root: null,
+            rootMargin: "-20% 0px -70% 0px",
+            threshold: 0
+        };
+
+        const observerCallback = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setActiveSection(entry.target.id);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        sections.forEach((sectionId) => {
+            const element = document.getElementById(sectionId);
+            if (element) observer.observe(element);
+        });
+
+        return () => observer.disconnect();
+    }, [pathname]);
+
     // Close dropdown when clicking outside
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -46,17 +80,24 @@ const Navbar = () => {
     };
 
     const navLinks = [
-        { name: t("navbar.home"), href: "" },
-        { name: t("navbar.features"), href: "features" },
-        { name: t("navbar.about"), href: "about" },
-        { name: t("navbar.howItWorks"), href: "how-it-works" },
-        { name: t("navbar.forBusinesses"), href: "business" },
-        { name: t("navbar.faq"), href: "faq" },
+        { name: t("navbar.home"), href: "", id: "hero" },
+        { name: t("navbar.features"), href: "features", id: "features" },
+        { name: t("navbar.about"), href: "about", id: "about" },
+        { name: t("navbar.howItWorks"), href: "how-it-works", id: "how-it-works" },
+        { name: t("navbar.forBusinesses"), href: "business", id: "business" },
+        { name: t("navbar.faq"), href: "faq", id: "faq" },
     ];
 
     const scrollToDownload = () => {
         setIsOpen(false);
         navigate("/download");
+    };
+
+    const isLinkActive = (link) => {
+        if (pathname === "/" && link.id) {
+            return activeSection === link.id;
+        }
+        return pathname === `/${link.href}`;
     };
 
     return (
@@ -89,9 +130,23 @@ const Navbar = () => {
                         <Link
                             key={link.href}
                             to={`/${link.href}`}
-                            className="text-sm font-medium text-slate-600 hover:text-primary transition-colors duration-200"
+                            className={cn(
+                                "text-sm font-medium transition-colors duration-200 relative py-1",
+                                isLinkActive(link)
+                                    ? "text-primary font-bold"
+                                    : "text-slate-600 hover:text-primary"
+                            )}
                         >
                             {link.name}
+                            {isLinkActive(link) && (
+                                <motion.div
+                                    layoutId="nav-active"
+                                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 0.2 }}
+                                />
+                            )}
                         </Link>
                     ))}
                 </div>
@@ -194,9 +249,17 @@ const Navbar = () => {
                                             key={link.href}
                                             to={`/${link.href}`}
                                             onClick={() => setIsOpen(false)}
-                                            className="text-lg font-medium text-slate-900 py-2 border-b border-slate-100 hover:text-primary transition-colors"
+                                            className={cn(
+                                                "text-lg font-medium py-3 border-b border-slate-100 transition-colors flex justify-between items-center",
+                                                isLinkActive(link)
+                                                    ? "text-primary font-bold"
+                                                    : "text-slate-900 hover:text-primary"
+                                            )}
                                         >
                                             {link.name}
+                                            {isLinkActive(link) && (
+                                                <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                            )}
                                         </Link>
                                     ))}
                                 </div>
