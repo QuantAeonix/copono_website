@@ -19,9 +19,23 @@ const Footer = () => {
                             </div>
                             <span className="text-xl font-bold text-white font-heading">Copono</span>
                         </Link>
-                        <p className="text-sm leading-relaxed max-w-xs">
-                            {t("footer.tagline")}
-                        </p>
+                        <div className="space-y-4">
+                            <p className="text-sm md:text-base leading-relaxed max-w-xs font-medium text-slate-300 tracking-wide">
+                                {t("footer.tagline").includes('Copono') ? (
+                                    <>
+                                        {t("footer.tagline").split('Copono')[0]}
+                                        <span className="text-primary font-bold">Copono</span>
+                                        {t("footer.tagline").split('Copono')[1]}
+                                    </>
+                                ) : t("footer.tagline").includes('كوبونو') ? (
+                                    <>
+                                        {t("footer.tagline").split('كوبونو')[0]}
+                                        <span className="text-primary font-bold">كوبونو</span>
+                                        {t("footer.tagline").split('كوبونو')[1]}
+                                    </>
+                                ) : t("footer.tagline")}
+                            </p>
+                        </div>
                         <div className="flex gap-3 mt-6">
                             {[Instagram, Twitter, Facebook, Youtube].map((Icon, i) => (
                                 <a key={i} href="#" className="w-9 h-9 bg-slate-800 hover:bg-primary/20 hover:text-primary rounded-lg flex items-center justify-center transition-colors">
