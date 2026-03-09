@@ -24,7 +24,7 @@ const ContactUs = () => {
             title: t("contact.whatsappTitle"),
             desc: t("contact.whatsappDesc"),
             value: t("contact.whatsappNumber"),
-            link: `https://wa.me/923001234567`, // Replace with actual number
+            link: `https://wa.me/966500023712`,
             color: "bg-emerald-500",
             lightColor: "bg-emerald-50",
             textColor: "text-emerald-600"

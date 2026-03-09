@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Apple, Play, Star, Shield, Zap, Search, Check } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import coponohero from "../assets/coponohero.jpeg";
+import coponohero from "../assets/coponohero.png";
 
 const Hero = () => {
     const { t, i18n } = useTranslation();
@@ -120,17 +120,15 @@ const Hero = () => {
                         transition={{ duration: 0.7, delay: 0.2 }}
                         className="relative flex items-center justify-center pt-8 lg:pt-0"
                     >
-                        <div className="relative w-[300px] md:w-[320px] aspect-[9/18.5] bg-slate-900 rounded-[3rem] shadow-2xl border-[8px] border-slate-900">
+                        <div className="relative w-[300px] md:w-[320px] bg-slate-900 rounded-[3rem] shadow-2xl border-[8px] border-slate-900">
                             {/* Detailed App Interface Mockup */}
-                            <div className="absolute inset-0 bg-slate-50 flex flex-col relative overflow-hidden rounded-[2.5rem]">
+                            <div className="bg-slate-50 flex flex-col overflow-hidden rounded-[2.5rem]">
                                 <img
                                     src={coponohero}
                                     alt="Copono App Interface"
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-auto"
                                 />
                             </div>
-
-                            {/* Removed Floating Elements per user request */}
                         </div>
                     </motion.div>
 
