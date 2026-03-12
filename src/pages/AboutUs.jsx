@@ -12,6 +12,7 @@ const AboutUs = () => {
         { icon: <Eye className="w-6 h-6" />, title: t("about.value1Title"), desc: t("about.value1Desc") },
         { icon: <Heart className="w-6 h-6" />, title: t("about.value2Title"), desc: t("about.value2Desc") },
         { icon: <Sparkles className="w-6 h-6" />, title: t("about.value3Title"), desc: t("about.value3Desc") },
+        { icon: <Users className="w-6 h-6" />, title: t("about.value4Title"), desc: t("about.value4Desc") },
     ];
 
     return (
@@ -78,13 +79,16 @@ const AboutUs = () => {
                             viewport={{ once: true }}
                         >
                             <h2 className="text-3xl md:text-5xl font-bold font-heading text-slate-900 mb-6 tracking-tight leading-tight">
-                                {t("about.missionTitle1")} <span className="line-through decoration-primary decoration-4">{t("about.missionTitleStrike")}</span> {t("about.missionTitleEnd")}
+                                {t("about.missionTitle1")}
                             </h2>
                             <p className="text-slate-600 text-lg leading-relaxed mb-6">
                                 {t("about.missionP1")}
                             </p>
-                            <p className="text-slate-600 text-lg leading-relaxed mb-8">
+                            <p className="text-slate-600 text-lg leading-relaxed mb-6">
                                 {t("about.missionP2")}
+                            </p>
+                            <p className="text-slate-600 text-lg leading-relaxed mb-8">
+                                {t("about.missionP3")}
                             </p>
 
                             <div className="flex flex-wrap gap-3">
@@ -92,6 +96,7 @@ const AboutUs = () => {
                                     { icon: <Check className="w-4 h-4" />, text: t("about.verifiedReceipts") },
                                     { icon: <Check className="w-4 h-4" />, text: t("about.instantPoints") },
                                     { icon: <Check className="w-4 h-4" />, text: t("about.globalPartners") },
+                                    { icon: <Check className="w-4 h-4" />, text: t("about.discountCodes") },
                                 ].map((badge, i) => (
                                     <span key={i} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
                                         {badge.icon}
@@ -141,12 +146,14 @@ const AboutUs = () => {
                         <h2 className="text-3xl md:text-5xl font-bold font-heading text-slate-900 mb-4 tracking-tight">
                             {t("about.valuesTitle")}
                         </h2>
-                        <p className="text-slate-600 text-lg leading-relaxed">
-                            {t("about.valuesDescription")}
-                        </p>
+                        {t("about.valuesDescription") && (
+                            <p className="text-slate-600 text-lg leading-relaxed">
+                                {t("about.valuesDescription")}
+                            </p>
+                        )}
                     </motion.div>
 
-                    <div className="grid md:grid-cols-3 gap-8">
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         {values.map((value, i) => (
                             <motion.div
                                 key={i}
@@ -175,9 +182,11 @@ const AboutUs = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
-                        <h2 className="text-3xl md:text-5xl font-bold font-heading text-slate-900 mb-6 tracking-tight">
-                            {t("about.ctaTitle")} <span className="text-primary italic">{t("about.ctaHighlight")}</span>?
-                        </h2>
+                        {t("about.ctaTitle") && (
+                            <h2 className="text-3xl md:text-5xl font-bold font-heading text-slate-900 mb-6 tracking-tight">
+                                {t("about.ctaTitle")} <span className="text-primary italic">{t("about.ctaHighlight")}</span>?
+                            </h2>
+                        )}
                         <p className="text-slate-600 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
                             {t("about.ctaDescription")}
                         </p>
@@ -194,7 +203,7 @@ const AboutUs = () => {
                             <Button
                                 asChild
                                 variant="outline"
-                                className="rounded-full px-8 py-6 text-lg border-slate-300 hover:bg-slate-100 hover:scale-105 active:scale-95 transition-all"
+                                className="rounded-full px-8 py-6 text-lg border-slate-300 hover:bg-slate-100 hover:text-slate-900 hover:scale-105 active:scale-95 transition-all"
                             >
                                 <a href="/business">{t("about.partnerWithUs")}</a>
                             </Button>
