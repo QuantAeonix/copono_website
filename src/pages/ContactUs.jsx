@@ -28,16 +28,6 @@ const ContactUs = () => {
             color: "bg-emerald-500",
             lightColor: "bg-emerald-50",
             textColor: "text-emerald-600"
-        },
-        {
-            icon: <MapPin className="w-6 h-6" />,
-            title: t("contact.officeTitle"),
-            desc: t("contact.officeDesc"),
-            value: t("contact.officeAddress"),
-            link: "https://maps.google.com",
-            color: "bg-amber-500",
-            lightColor: "bg-amber-50",
-            textColor: "text-amber-600"
         }
     ];
 
@@ -85,7 +75,7 @@ const ContactUs = () => {
             {/* Contact Grid */}
             <section className="pb-24">
                 <div className="container mx-auto px-4">
-                    <div className="grid md:grid-cols-3 gap-8">
+                    <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                         {contactMethods.map((method, i) => (
                             <motion.div
                                 key={i}

@@ -1,19 +1,10 @@
 import { Link } from "react-router-dom";
-import { Instagram, Twitter } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import coponooLogo from "../assets/coponooLogo.png";
-
-const SnapchatIcon = ({ className }) => (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <path d="M12 2.5a5.5 5.5 0 0 0-5.5 5.5c0 1.5.6 2.8 1.6 3.8-.8.4-1.6 1.1-2.1 1.9-.5 1 .3 2.1 1.4 2.1 1.1 0 2.2-.4 3.1-1.1v4c0 1.1.9 2 2 2s2-.9 2-2v-4c.9.7 2 1.1 3.1 1.1 1.1 0 1.9-1.1 1.4-2.1-.5-.8-1.3-1.5-2.1-1.9 1-1 1.6-2.3 1.6-3.8A5.5 5.5 0 0 0 12 2.5" />
-    </svg>
-);
-
-const TikTokIcon = ({ className }) => (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
-    </svg>
-);
+import instaImg from "../assets/instagram_color.png";
+import snapchatImg from "../assets/snapchat_color.png";
+import tiktokImg from "../assets/tiktok_color.png";
+import xImg from "../assets/x_color.png";
 
 const Footer = () => {
     const { t } = useTranslation();
@@ -47,15 +38,15 @@ const Footer = () => {
                                 ) : t("footer.tagline")}
                             </p>
                         </div>
-                        <div className="flex gap-3 mt-6">
+                        <div className="flex gap-4 mt-6">
                             {[
-                                { Icon: Instagram, href: "#" },
-                                { Icon: Twitter, href: "#" },
-                                { Icon: SnapchatIcon, href: "#" },
-                                { Icon: TikTokIcon, href: "#" }
-                            ].map(({ Icon, href }, i) => (
-                                <a key={i} href={href} className="w-9 h-9 bg-slate-800 hover:bg-primary/20 hover:text-primary rounded-lg flex items-center justify-center transition-colors">
-                                    <Icon className="w-4 h-4" />
+                                { imgSrc: instaImg, href: "#", alt: "Instagram", bg: "bg-[#1f2128] hover:bg-[#2d3039]" },
+                                { imgSrc: xImg, href: "#", alt: "X (Twitter)", bg: "bg-white hover:bg-gray-200" },
+                                { imgSrc: snapchatImg, href: "#", alt: "Snapchat", bg: "bg-[#1f2128] hover:bg-[#2d3039]" },
+                                { imgSrc: tiktokImg, href: "#", alt: "TikTok", bg: "bg-white hover:bg-gray-200" }
+                            ].map((item, i) => (
+                                <a key={i} href={item.href} className={`w-10 h-10 ${item.bg} rounded-full flex items-center justify-center transition-transform hover:scale-110 shadow-sm border border-slate-800`}>
+                                    <img src={item.imgSrc} alt={item.alt} className="w-6 h-6 object-contain" />
                                 </a>
                             ))}
                         </div>
@@ -72,7 +63,7 @@ const Footer = () => {
 
                     {/* Resources */}
                     <div>
-                        <h4 className="text-white font-bold text-sm mb-4">Legal</h4>
+                        <h4 className="text-white font-bold text-sm mb-4">{t("footer.otherLinks")}</h4>
                         <ul className="space-y-3 text-sm">
                             <li><Link to="/privacy" className="hover:text-primary transition-colors">{t("footer.privacyPolicy")}</Link></li>
                             <li><Link to="/terms" className="hover:text-primary transition-colors">{t("footer.termsOfService")}</Link></li>

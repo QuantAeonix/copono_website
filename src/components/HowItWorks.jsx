@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Search, Tag, ShoppingBag, ArrowRight, Check, Star, Receipt, Sparkles } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import BrowseImage from "../assets/browse.png";
-import CouponCodeImage from "../assets/coupen code.jpeg";
+import CouponCodeImage from "../assets/noon.png";
 import ThirdImage from "../assets/third.jpeg";
 
 const HowItWorks = () => {
