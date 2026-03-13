@@ -40,9 +40,9 @@ const Footer = () => {
                         </div>
                         <div className="flex gap-4 mt-6">
                             {[
-                                { imgSrc: instaImg, href: "#", alt: "Instagram", bg: "bg-[#1f2128] hover:bg-[#2d3039]" },
+                                { imgSrc: instaImg, href: "#", alt: "Instagram", bg: "bg-white hover:bg-gray-200" },
                                 { imgSrc: xImg, href: "#", alt: "X (Twitter)", bg: "bg-white hover:bg-gray-200" },
-                                { imgSrc: snapchatImg, href: "#", alt: "Snapchat", bg: "bg-[#1f2128] hover:bg-[#2d3039]" },
+                                { imgSrc: snapchatImg, href: "#", alt: "Snapchat", bg: "bg-white hover:bg-gray-200" },
                                 { imgSrc: tiktokImg, href: "#", alt: "TikTok", bg: "bg-white hover:bg-gray-200" }
                             ].map((item, i) => (
                                 <a key={i} href={item.href} className={`w-10 h-10 ${item.bg} rounded-full flex items-center justify-center transition-transform hover:scale-110 shadow-sm border border-slate-800`}>
