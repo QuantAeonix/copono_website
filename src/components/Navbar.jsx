@@ -6,6 +6,7 @@ import { Menu, Globe, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import coponooLogo from "../assets/coponooLogo.png";
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -116,9 +117,7 @@ const Navbar = () => {
                     onClick={() => setIsOpen(false)}
                     className="flex items-center gap-2 z-50"
                 >
-                    <div className="w-8 h-8 md:w-10 md:h-10 bg-primary rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-primary/30">
-                        C
-                    </div>
+                    <img src={coponooLogo} alt="Copono Logo" className="w-6.5 h-6.5 md:w-8 md:h-8 object-contain" />
                     <span className={cn("text-xl md:text-2xl font-bold font-heading tracking-tight text-slate-900")}>
                         Copono
                     </span>

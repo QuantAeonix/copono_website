@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Instagram, Twitter } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import coponooLogo from "../assets/coponooLogo.png";
 
 const SnapchatIcon = ({ className }) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -26,9 +27,7 @@ const Footer = () => {
                     {/* Brand */}
                     <div className="col-span-2 md:col-span-1">
                         <Link to="/" className="flex items-center gap-2 mb-4">
-                            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-primary/30">
-                                C
-                            </div>
+                            <img src={coponooLogo} alt="Copono Logo" className="w-8 h-8 object-contain" />
                             <span className="text-xl font-bold text-white font-heading">Copono</span>
                         </Link>
                         <div className="space-y-4">
