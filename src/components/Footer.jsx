@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import coponooLogo from "../assets/coponooLogo.png";
+import coponooLogo from "../assets/logoo.jpeg";
 import instaImg from "../assets/instagram_color.png";
 import snapchatImg from "../assets/snapchat_color.png";
 import tiktokImg from "../assets/tiktok_color.png";
