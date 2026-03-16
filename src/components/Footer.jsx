@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import coponooLogo from "../assets/logoo.jpeg";
+import coponooLogo from "../assets/CLogo.png";
 import instaImg from "../assets/instagram_color.png";
 import snapchatImg from "../assets/snapchat_color.png";
 import tiktokImg from "../assets/tiktok_color.png";
@@ -18,7 +18,14 @@ const Footer = () => {
                     {/* Brand */}
                     <div className="col-span-2 md:col-span-1">
                         <Link to="/" className="flex items-center gap-2 mb-4">
-                            <img src={coponooLogo} alt="Copono Logo" className="w-8 h-8 object-contain" />
+                            <div className="w-12 h-12 relative flex items-center justify-center">
+                                <div className="absolute w-6 h-6 bg-white rounded-md z-0" />
+                                <img 
+                                    src={coponooLogo} 
+                                    alt="Copono Logo" 
+                                    className="w-full h-full object-cover rounded-xl relative z-10" 
+                                />
+                            </div>
                             <span className="text-xl font-bold text-white font-heading">Copono</span>
                         </Link>
                         <div className="space-y-4">
